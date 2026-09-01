@@ -1,0 +1,237 @@
+/* chrome-extension/style.css */
+
+/* Theme variables */
+:root {
+    --bg: #fafafa;
+    --text-color: #000;
+    --tile-bg: #fafafa;
+    --tile-border: #e2e2e2;
+    --secondary-text: #555;
+    --tertiary-text: #777;
+    --button-bg: #fff;
+    --button-border: #ccc;
+}
+html[data-theme="dark"] {
+    --bg: #1e1e1e;
+    --text-color: #e4e4e4;
+    --tile-bg: #2a2a2a;
+    --tile-border: #444;
+    --secondary-text: #bbb;
+    --tertiary-text: #999;
+    --button-bg: #2a2a2a;
+    --button-border: #555;
+}
+
+body {
+    font: 14px/1.4 system-ui, sans-serif;
+    min-width: 444px;
+    padding: 12px;
+    margin: 0;
+    background: var(--bg);
+    color: var(--text-color);
+    position: relative;
+}
+
+h1 {
+    font-size: 1rem;
+    margin: 0 0 .5em;
+    text-align: center;
+    color: var(--text-color);
+}
+
+/* small gap under header/buttons row */
+.list {
+    margin-top: 16px;
+    margin-right: 0px;
+    max-height: 420px;
+    overflow-y: auto;
+}
+
+/* ----------------------------------
+   Custom scrollbar for .list & body
+------------------------------------- */
+
+/* Firefox */
+.list,
+body {
+    scrollbar-width: thin;
+    scrollbar-color: var(--secondary-text) var(--tile-border);
+}
+
+/* WebKit */
+.list::-webkit-scrollbar,
+body::-webkit-scrollbar {
+    width: 6px;
+}
+
+.list::-webkit-scrollbar-track,
+body::-webkit-scrollbar-track {
+    background: var(--tile-border);
+}
+
+.list::-webkit-scrollbar-thumb,
+body::-webkit-scrollbar-thumb {
+    background: var(--secondary-text);
+    border-radius: 3px;
+}
+
+/* Dark-mode overrides */
+html[data-theme="dark"] .list::-webkit-scrollbar-track,
+html[data-theme="dark"] body::-webkit-scrollbar-track {
+    background: #111;
+}
+html[data-theme="dark"] .list::-webkit-scrollbar-thumb,
+html[data-theme="dark"] body::-webkit-scrollbar-thumb {
+    background: var(--tertiary-text);
+}
+
+pre.output {
+    white-space: pre-wrap;
+    word-break: break-word;
+    border: 1px solid var(--tile-border);
+    border-radius: 6px;
+    padding: 8px;
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+/* individual tile */
+.tile {
+    display: flex;
+    gap: 0.75rem;
+    align-items: flex-start;
+    padding: 10px 12px;
+    margin-bottom: 8px;
+    border: 1px solid var(--tile-border);
+    border-radius: 8px;
+    background: var(--tile-bg);
+    cursor: pointer;
+}
+
+.tile .lhs {
+    flex: 0 0 120px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.2rem;
+}
+
+.tile .lhs .balance-block {
+    display: flex;
+    gap: 0.3rem;
+    align-items: center;
+}
+
+.tile .lhs .balance {
+    font-variant-numeric: tabular-nums;
+}
+
+.tile .lhs .months {
+    font-size: 0.8rem;
+    color: var(--text-color);
+}
+
+.tile .lhs .monthly-rent {
+    font-size: 0.8rem;
+    color: var(--text-color);
+    font-weight: normal;
+}
+
+.tile .rhs {
+    flex: 1;
+}
+
+.tile .rhs .address {
+    font-weight: 600;
+    color: var(--text-color);
+}
+.tile .rhs .unit {
+    font-size: 0.85rem;
+    color: var(--secondary-text);
+}
+.tile .rhs .tenants {
+    font-size: 0.8rem;
+    color: var(--tertiary-text);
+    margin-top: 2px;
+}
+
+.tile .rhs .in-progress {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    margin-top: 4px;
+    font-size: 0.8rem;
+    color: var(--secondary-text);
+}
+.tile .rhs .in-progress-emoji {
+    font-size: 1rem;
+}
+
+/* Theme toggle & download buttons */
+.theme-btn,
+.download-btn {
+    position: absolute;
+    top: 12px;
+    width: 28px;
+    height: 28px;
+    padding: 0;
+    border: 1px solid var(--button-border);
+    border-radius: 4px;
+    background: var(--button-bg);
+    color: var(--text-color);
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+.theme-btn.rotating {
+    transform: rotate(360deg);
+}
+.theme-btn {
+    left: 12px;
+}
+.download-btn {
+    right: 12px;
+}
+.download-btn svg {
+    width: 16px;
+    height: 16px;
+    stroke: var(--text-color);
+}
+
+/* Share button (📧) */
+.share-btn {
+    position: absolute;
+    top: 12px;
+    right: 48px;
+    width: 28px;
+    height: 28px;
+    padding: 0;
+    border: 1px solid var(--button-border);
+    border-radius: 4px;
+    background: var(--button-bg);
+    color: var(--text-color);
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.share-btn.rotating {
+    transform: rotate(360deg);
+}
+
+@keyframes flashBorder {
+    0%   { box-shadow: 0 0 0 0 rgba(255, 215, 0, 0.9); }
+    50%  { box-shadow: 0 0 10px 4px rgba(255, 215, 0, 0.9); }
+    100% { box-shadow: 0 0 0 0 rgba(255, 215, 0, 0.9); }
+}
+.flash-scroll-target {
+    animation: flashBorder 1.2s ease-out;
+}

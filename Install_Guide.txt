@@ -1,0 +1,13 @@
+Install:
+
+1. Place this apts-chrome-extension folder somewhere
+2. Open Chrome, click Extensions icon > Manage or three dots > Extensions > Manage
+3. Toggle ON Developer Mode in the very upper-right
+4. Click the 'Load Unpacked' button at the top left
+5. Select the Folder that contains this to add this as a Chrome extension
+
+
+Usage:
+
+1. Pull up Apartments.com, go to Payments tab as the Rental Manager
+2. Click the Extensions icon, and select the Apartments.com Balance Extractor (our extension)
