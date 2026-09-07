@@ -8,3 +8,9 @@ Thumbs.db
 *.zip
 *.crx
 *.pem
+
+# Local AI-assistant instructions (never commit)
+AGENTS.md
+SOUL.md
+.hermes.md
+CLAUDE.md
